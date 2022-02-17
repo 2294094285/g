@@ -1,26 +1,26 @@
 #include <stdio.h>
-#include <graphics.h>      // ÒıÓÃÍ¼ĞÎ¿âÍ·ÎÄ¼ş
+#include <graphics.h>      // å¼•ç”¨å›¾å½¢åº“å¤´æ–‡ä»¶
 #include <conio.h>
 #include <time.h>
 #include <easyx.h>   
 
 #define GAMEROW 20
 #define GAMECOLUMN 30  
-#define TIPSN 6       //ÌáÊ¾Çø·½¸ñÊı
+#define TIPSN 6       //æç¤ºåŒºæ–¹æ ¼æ•°
 #define SPACE 20
-#define PIXMAP 20     //·½¸ñÏñËØ´óĞ¡
+#define PIXMAP 20     //æ–¹æ ¼åƒç´ å¤§å°
 #define BOUNDARY 20
 #define BORDER 4
-DWORD g_oldtime, g_newtime;//µÎ´ğÊ±¼ä,Í¨¹ıGetTickCount()»ñÈ¡
-char m_gameMap[GAMEROW][GAMECOLUMN] = {0};    //ÓÎÏ·½çÃæÊı×é
+DWORD g_oldtime, g_newtime;//æ»´ç­”æ—¶é—´,é€šè¿‡GetTickCount()è·å–
+char m_gameMap[GAMEROW][GAMECOLUMN] = {0};    //æ¸¸æˆç•Œé¢æ•°ç»„
 
 unsigned short block[7][4] = {
- {0x660, 0x660, 0x660, 0x660},    // Ìï
- {0x2222, 0xf0, 0x2222, 0xf0},  // Ò» 
+ {0x660, 0x660, 0x660, 0x660},    // ç”°
+ {0x2222, 0xf0, 0x2222, 0xf0},  // ä¸€ 
  {0x446, 0x740, 0x622, 0x170},    // L
- {0x226, 0x470, 0x644, 0x710},  // ·´L
+ {0x226, 0x470, 0x644, 0x710},  // åL
  {0x630, 0x264, 0x630, 0x264},  // Z
- {0x360, 0x462, 0x360, 0x462},  // ·´Z
+ {0x360, 0x462, 0x360, 0x462},  // åZ
  {0x720, 0x262, 0x270, 0x464}  // T
 };
 
@@ -32,13 +32,13 @@ struct Point
 
 struct BlockInfo
 {
- int type;     //·½¿éÀàĞÍ
- int dir;   //·½¿é·½Ïò
- struct Point pos;   //ÓÎÏ·4*4ÕûÌå·½¿éµÄÓÎÏ·Çø×ø±ê
- struct Point basePos[4];  //4¸öĞ¡·½¿éµÄ4*4ÇøÓò×ø±ê
- struct Point offPos[4];   //4¸öĞ¡·½¿éÔÚÓÎÏ·ÇøµÄÏà¶Ô×ø±ê
+ int type;     //æ–¹å—ç±»å‹
+ int dir;   //æ–¹å—æ–¹å‘
+ struct Point pos;   //æ¸¸æˆ4*4æ•´ä½“æ–¹å—çš„æ¸¸æˆåŒºåæ ‡
+ struct Point basePos[4];  //4ä¸ªå°æ–¹å—çš„4*4åŒºåŸŸåæ ‡
+ struct Point offPos[4];   //4ä¸ªå°æ–¹å—åœ¨æ¸¸æˆåŒºçš„ç›¸å¯¹åæ ‡
 }g_curBlock, g_nextBlock;
-void hin_win_cub(struct BlockInfo *np,struct BlockInfo *cp)//ÌáÊ¾´°¿ÚÍ¼ĞÎ
+void hin_win_cub(struct BlockInfo *np,struct BlockInfo *cp)//æç¤ºçª—å£å›¾å½¢
 {
 	int i,j=0;
 	setorigin(GAMEROW*PIXMAP+2*PIXMAP,1*PIXMAP);
@@ -66,9 +66,9 @@ void hin_win_cub(struct BlockInfo *np,struct BlockInfo *cp)//ÌáÊ¾´°¿ÚÍ¼ĞÎ
 	}
 	setorigin(0,0);
 }
-void geme_win_cube( struct BlockInfo *np,int sink_n ,int move_g_n,int n, int var_g)//ÓÎÏ·´°¿ÚÍ¼ĞÎ
-{
-	int i,j=0;
+void geme_win_cube( struct BlockInfo *np,int sink_n ,int move_g_n,int n, int var_g)//æ¸¸æˆçª—å£å›¾å½¢
+{å°å·
+	æ•´æ•° i , j = ;
 	if(n)
 	for(i=0;i<4;i++)
 				{
@@ -275,7 +275,7 @@ int main()
 			break;
 		}
 	}
-	 _getch();              // °´ÈÎÒâ¼ü¼ÌĞø
+	 _getch();              // æŒ‰ä»»æ„é”®ç»§ç»­
     closegraph();         
 	return 0;
 }
